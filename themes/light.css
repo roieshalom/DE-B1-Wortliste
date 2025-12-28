@@ -13,4 +13,7 @@
   --shadow-sm: 0 4px 16px rgba(0,0,0,0.15);
   --card-border: 1px solid #ddd;
   --font-family: 'Noto Sans', Arial, sans-serif;
+  --header-text: #333;
+  --header-link: #007bff;
+  --header-link-hover: #0056b3;
 }

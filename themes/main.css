@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Geo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxanium&display=swap');
 
 /* Generic defaults (overridden by theme files) */
 :root {
@@ -23,6 +23,9 @@
   --font-family: 'Noto Sans', Arial, sans-serif;
   --font-weight-normal: 400;
   --font-weight-bold: 700;
+  --header-text: #333;
+  --header-link: #007bff;
+  --header-link-hover: #0056b3;
 }
 
 /* Shared styles using variables */
@@ -59,44 +62,47 @@ h1 {
 /* Header */
 .header {
   padding: 20px;
-  text-align: center;
   max-width: 400px;
-  margin: auto;
+  margin: 0 auto;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 .header h1 {
   font-size: 18px;
   font-weight: 400;
-  color: #333;
-  margin: 0 0 15px 0;
-  font-family: 'Noto Sans', sans-serif;
+  color: var(--header-text); 
+  font-family: var(--font-family);
 }
 
 .app-title {
   font-size: 20px;
   font-weight: 400;
-  color: #333;
-  text-align: left;
-  padding-top: 12px;
-  padding-bottom: 6px;
+  color: var(--header-text);
   margin: 0;
+  font-family: var(--font-family);
 }
 
 .header-links {
   display: flex;
-  justify-content: center;
-  gap: 30px;
+  gap: 14px;
 }
 
 .header-links a {
-  color: #007bff;
+  color: var(--header-link);
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: 500;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: var(--font-family);
 }
 
 .header-links a:hover {
+  color: var(--header-link-hover);
   text-decoration: underline;
 }
 

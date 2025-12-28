@@ -13,5 +13,8 @@
   --shadow-sm: 7px 7px 0px 0px hsl(0 0% 0% / 1);
   --card-border: 2px solid black;
   --button-radius: 0px;
-  --font-family: 'Geo', Courier, monospace;
+  --font-family: 'Oxanium', Courier, monospace;
+  --header-text: oklch(0 0 0);
+  --header-link: oklch(0.6489 0.2370 26.9728);
+  --header-link-hover: oklch(0.7044 0.1872 23.1858);
 }

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="themes/brutalist.css">
 </head>
 <body>
-    <div class="theme-bar">
+  <div class="theme-bar">
     <button class="theme-btn theme-btn-default" onclick="setTheme('light')">
       Default
     </button>
@@ -20,22 +20,93 @@
       Brutalist
     </button>
   </div>
-      <div class="header">
-        <div class="header-inner">
-          <h1 class="app-title">B1-WortschatzÜbung</h1>
-          <div class="header-links">
-            <a href="#statistiken">Statistiken</a>
-            <a href="#ueber">Über</a>
-          </div>
-        </div>
-      </div>
 
-  
+  <div class="header">
+    <div class="header-inner">
+      <h1 class="app-title">B1-WortschatzÜbung</h1>
+      <div class="header-links">
+        <a href="#statistiken">Statistiken</a>
+        <!-- give the Über link an id so JS can hook it -->
+        <a href="#ueber" id="about-link">Über</a>
+      </div>
+    </div>
+  </div>
+
   <div class="main-layout">
     <div id="game-container"></div>
     <button id="next-btn">Next</button>
   </div>
-  
+
+  <!-- ABOUT MODAL -->
+  <div class="about-modal-overlay" id="about-overlay">
+    <div class="about-modal" id="about-modal">
+      <div class="about-modal-header">
+        <h2 class="about-modal-title">
+          Über
+          <span>
+            <button
+              type="button"
+              class="about-modal-lang-btn active"
+              id="about-lang-de"
+              aria-label="Deutsch"
+            >🇩🇪</button>
+            <button
+              type="button"
+              class="about-modal-lang-btn"
+              id="about-lang-en"
+              aria-label="English"
+            >🇬🇧</button>
+          </span>
+        </h2>
+        <button class="about-modal-close" id="about-close-btn" aria-label="Schließen">&times;</button>
+      </div>
+
+      <div class="about-modal-body">
+        <p id="about-text-de">
+          <span style="font-weight:600;">
+            Diese Seite hilft dir, den gesamten wichtigen Wortschatz der offiziellen Goethe-B1-Wortliste zu lernen.
+          </span>
+          <br><br>
+          Diese Seite ist ein kleines Übungswerkzeug, um den deutschen Wortschatz auf B1-Niveau aufzubauen.
+          Die Wortliste basiert auf der offiziellen Goethe-B1-Wortliste und enthält nur Vokabeln auf diesem Niveau.
+          Du kannst die Karten umdrehen, dir zu jedem deutschen Wort die englische Übersetzung ansehen und mit dem Next Button in deinem eigenen Tempo weiterlernen.
+          Es gibt keine Accounts, keine Anmeldung und die Nutzung ist kostenlos.
+          Es können einfache, anonyme Nutzungsdaten (zum Beispiel Anzahl der Besucher und Sitzungen)
+          erfasst werden, um zu sehen, ob die Seite noch verwendet wird.
+          Es werden keine personenbezogenen Daten gespeichert oder weitergegeben,
+          und es besteht keine Verbindung zum Goethe-Institut oder zu anderen offiziellen Prüfungsanbietern.
+        </p>
+
+        <p id="about-text-en" style="display:none;">
+          <span style="font-weight:600;">
+            This site helps you learn all key vocabulary from the official Goethe B1 word list.
+          </span>
+          <br><br>
+          This site is a small practice tool for building German vocabulary at the B1 level. 
+          It is based on the official Goethe B1 word list and focuses only on words from that level.
+          You can flip through the cards, see each German word with its English translation,
+          and move on with the Next button at your own pace. There are no accounts, no logins, and the tool is free to use.
+          Basic, anonymous usage data (for example number of visitors and sessions) may be collected to understand whether people are still using the site.
+          No personal data is stored or shared, and there is no connection to Goethe-Institut or any other official exam provider.    
+        </p>
+      </div>
+
+      <div class="about-modal-bottom">
+        <a
+          href="mailto:fragen@fragen-katalog.com"
+          class="about-modal-email"
+        >
+          fragen@fragen-katalog.com
+        </a>
+
+        <!-- Support button placeholder -->
+        <button type="button" class="support-button-placeholder">
+          Unterstützen
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Keys from JSON
     const WORD_KEY = "Wortliste";
@@ -142,6 +213,51 @@
     document.addEventListener('DOMContentLoaded', () => {
       const savedTheme = localStorage.getItem('theme') || 'light';
       setTheme(savedTheme);
+
+      // ABOUT MODAL JS
+      const aboutLink = document.getElementById('about-link');
+      const aboutOverlay = document.getElementById('about-overlay');
+      const aboutModal = document.getElementById('about-modal');
+      const aboutCloseBtn = document.getElementById('about-close-btn');
+      const langDeBtn = document.getElementById('about-lang-de');
+      const langEnBtn = document.getElementById('about-lang-en');
+      const textDe = document.getElementById('about-text-de');
+      const textEn = document.getElementById('about-text-en');
+
+      function openAbout() {
+        aboutOverlay.classList.add('open');
+      }
+
+      function closeAbout() {
+        aboutOverlay.classList.remove('open');
+      }
+
+      aboutLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        openAbout();
+      });
+
+      aboutCloseBtn.addEventListener('click', closeAbout);
+
+      aboutOverlay.addEventListener('click', function(e) {
+        if (e.target === aboutOverlay) {
+          closeAbout();
+        }
+      });
+
+      langDeBtn.addEventListener('click', () => {
+        langDeBtn.classList.add('active');
+        langEnBtn.classList.remove('active');
+        textDe.style.display = 'block';
+        textEn.style.display = 'none';
+      });
+
+      langEnBtn.addEventListener('click', () => {
+        langEnBtn.classList.add('active');
+        langDeBtn.classList.remove('active');
+        textDe.style.display = 'none';
+        textEn.style.display = 'block';
+      });
     });
   </script>
 </body>

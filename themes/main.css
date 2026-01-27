@@ -106,6 +106,10 @@ h1 {
   text-decoration: underline;
 }
 
+.header-links a[href="#statistiken"] {
+  display: none;
+}
+
 #game-container {
   margin-top: var(--spacing-lg);
   margin-bottom: 0;
@@ -304,4 +308,106 @@ h1 {
 
 .theme-btn-brutalist:hover {
   background: #ffe1e1;
+}
+
+/* About modal */
+.about-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.about-modal-overlay.open {
+  display: flex;
+}
+
+.about-modal {
+  background: var(--card-bg);
+  color: var(--foreground);
+  max-width: 400px;
+  width: 90%;
+  max-height: 90vh;
+  border-radius: var(--border-radius);
+  padding: 24px 0 180px 0;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 16px 16px;
+}
+
+.about-modal-title {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.about-modal-lang-btn {
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.about-modal-lang-btn.active {
+  opacity: 1;
+}
+
+.about-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.about-modal-body {
+  padding: 0 16px;
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.about-modal-bottom {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  gap: 24px;
+}
+
+.about-modal-email {
+  text-decoration: underline;
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.support-button-placeholder {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
 }

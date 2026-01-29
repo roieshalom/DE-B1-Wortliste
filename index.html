@@ -95,10 +95,13 @@
           target="_blank"
           rel="noopener noreferrer"
           class="primary-btn"
+          id="support-btn"
           style="text-align:center; text-decoration:none; display:block;"
         >
           ❤️ Support this project
         </a>
+      </div>
+
       </div>
     </div>
   </div>
@@ -260,6 +263,7 @@
       const feedbackOpenBtn = document.getElementById('feedback-open-btn');
       const feedbackHeaderLink = document.getElementById('feedback-link');
       const contactForm = document.getElementById('about-contact-form');
+      const supportBtn = document.getElementById('support-btn');
 
       function openAbout() {
         aboutOverlay.classList.add('open');
@@ -293,18 +297,20 @@
 
       // Language toggle in Über modal
       langDeBtn.addEventListener('click', () => {
-        langDeBtn.classList.add('active');
-        langEnBtn.classList.remove('active');
-        textDe.style.display = 'block';
-        textEn.style.display = 'none';
-      });
+      langDeBtn.classList.add('active');
+      langEnBtn.classList.remove('active');
+      textDe.style.display = 'block';
+      textEn.style.display = 'none';
+      if (supportBtn) supportBtn.textContent = '❤️ Projekt unterstützen';
+    });
 
-      langEnBtn.addEventListener('click', () => {
-        langEnBtn.classList.add('active');
-        langDeBtn.classList.remove('active');
-        textDe.style.display = 'none';
-        textEn.style.display = 'block';
-      });
+    langEnBtn.addEventListener('click', () => {
+      langEnBtn.classList.add('active');
+      langDeBtn.classList.remove('active');
+      textDe.style.display = 'none';
+      textEn.style.display = 'block';
+      if (supportBtn) supportBtn.textContent = '❤️ Support this project';
+    });
 
       // Feedback modal from About button
       if (feedbackOpenBtn) {
